@@ -1,0 +1,65 @@
+//
+//// Fix RangePicker for mobile view
+//@media(max-width: 576px) {
+//  .ant-picker-panels {
+//    flex-direction: column;
+//  }
+//}
+//
+//.color-picker {
+//  .ant-color-picker-color-block {
+//    height: 100%;
+//    width: 100%;
+//  }
+//}
+//
+//.ant-input-affix-wrapper .ant-input-prefix {
+//  margin-inline-end: 8px;
+//}
+//
+//
+//.ant-result {
+//  padding: 80px 32px;
+//  height: 100%;
+//}
+//
+//
+//.ant-modal.ant-modal-confirm.ant-modal-confirm-info {
+//  width: auto !important;
+//
+//  @media(min-width: 560px) {
+//    max-width: 510px;
+//  }
+//}
+//
+//.ant-modal {
+//  & &-content {
+//    background: #121212;
+//  }
+//
+//  &-confirm &-confirm-title {
+//    color: #ffffff;
+//    font-size: 18px;
+//  }
+//
+//  &-close-x {
+//    color: #ffffff;
+//  }
+//}
+//
+//.ant-drawer {
+//  &-content-wrapper {
+//    height: max-content !important;
+//    max-height: calc(100% - 64px) !important;
+//    overflow: auto;
+//
+//    //.ant-drawer-content {
+//    //  background: #121212;
+//    //}
+//  }
+//
+//  &-body {
+//    display: flex;
+//    flex-direction: column;
+//  }
+//}
