@@ -4,6 +4,7 @@ import { Formik, FormikHelpers } from 'formik';
 import { useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
+import { Message } from '../../../const/messages.const.ts';
 import { RoutePaths } from '../../../const/routes.const.ts';
 import { Validation } from '../../../const/validation.const.ts';
 import { useStore } from '../../../hooks/useStore.hook.ts';
@@ -12,9 +13,6 @@ import { InputError } from '../../shared/InputError.tsx';
 import { AuthPage } from '../components/AuthPage.tsx';
 
 
-const passwordValidationMessage = 'Password must contain letters, digits and be 6-25 characters long.';
-const passwordNotMatchMessage = 'Passwords must match.';
-
 const formValidationSchema = Yup.object().shape({
   email: Yup.string()
     .label('Email')
@@ -22,12 +20,12 @@ const formValidationSchema = Yup.object().shape({
     .required(),
   password: Yup.string()
     .label('Password')
-    .matches(Validation.PASSWORD_REGEXP, { message: passwordValidationMessage })
+    .matches(Validation.regExpPassword, { message: Message.passwordValidation })
     .required(),
   confirmPassword: Yup.string()
     .label('Confirm password')
-    .matches(Validation.PASSWORD_REGEXP, { message: passwordValidationMessage })
-    .oneOf([ Yup.ref('password'), '' ], passwordNotMatchMessage)
+    .matches(Validation.regExpPassword, { message: Message.passwordValidation })
+    .oneOf([ Yup.ref('password'), '' ], Message.passwordNotMatch)
     .required()
 });
 

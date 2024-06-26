@@ -1,9 +1,7 @@
-import { Form } from 'antd';
 import { observer } from 'mobx-react-lite';
-import React, { useState } from 'react';
-import { useNavigate, useSearchParams } from 'react-router-dom';
+import React from 'react';
+import { useSearchParams } from 'react-router-dom';
 import * as Yup from 'yup';
-import { useStore } from '../../../hooks/useStore.hook.ts';
 import { AuthPage } from '../components/AuthPage.tsx';
 
 
