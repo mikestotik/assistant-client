@@ -1,10 +1,10 @@
 import { Button, Form, Input } from 'antd';
-import Icon from 'antd/es/icon';
 import { AxiosError } from 'axios';
 import { Formik, FormikHelpers } from 'formik';
 import { useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
+import { RoutePaths } from '../../../const/routes.const.ts';
 import { Validation } from '../../../const/validation.const.ts';
 import { useStore } from '../../../hooks/useStore.hook.ts';
 import { SignUpPayload } from '../../../models/auth/auth.interfaces.ts';
@@ -54,7 +54,7 @@ export const AuthSignUp = () => {
     try {
       await authStore.signUp(values);
 
-      // navigate(RoutePaths.ROLES);
+      navigate(`${ RoutePaths.AUTH_SIGN_UP_CONFIRMATION }?email=${ values.email }`);
     } catch (e) {
       await handleSubmitError(e as AxiosError);
     }

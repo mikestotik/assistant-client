@@ -12,7 +12,7 @@ export class AuthResource {
 
 
   public signUp(payload: SignUpPayload) {
-    return http.post<LoginResponse>(CoreApiUri.AUTH_SIGN_UP, payload);
+    return http.post<LoginResponse>(CoreApiUri.ACCOUNT, payload);
   }
 
 
