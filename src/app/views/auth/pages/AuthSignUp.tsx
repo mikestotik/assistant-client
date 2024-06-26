@@ -2,7 +2,7 @@ import { Button, Form, Input } from 'antd';
 import { AxiosError } from 'axios';
 import { Formik, FormikHelpers } from 'formik';
 import { useCallback } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
 import { Message } from '../../../const/messages.const.ts';
 import { RoutePaths } from '../../../const/routes.const.ts';
@@ -136,12 +136,12 @@ export const AuthSignUp = () => {
                 loading={ isSubmitting }
                 block
               >
-                Create an account
+                Create account
               </Button>
             </Form.Item>
 
             <div className="auth-back">
-              <Button type="link">Sign In</Button>
+              <NavLink to={ RoutePaths.AUTH_SIGN_IN }>Sign In</NavLink>
             </div>
           </Form>
         ) }
