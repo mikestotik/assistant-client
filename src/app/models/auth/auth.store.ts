@@ -1,7 +1,7 @@
 import { makeAutoObservable, reaction, runInAction } from 'mobx';
 import { LOCAL_STORAGE_TOKENS } from '../../const/storage.const.ts';
 import { JWTParser } from '../../utils/jwt.utils.ts';
-import { SignInPayload } from './auth.interfaces.ts';
+import { SignInPayload, SignUpPayload } from './auth.interfaces.ts';
 import { authService } from './auth.service.ts';
 
 
@@ -53,6 +53,12 @@ export class AuthStore {
   };
 
 
+  public async signUp(values: SignUpPayload) {
+    const res = await authService.signUp(values);
+    console.log(res);
+  }
+
+
   public async signOut() {
     return authService.signOut()
       .then(() => this.reset());
@@ -63,5 +69,6 @@ export class AuthStore {
     this.setAccessToken(null);
     this.setRefreshToken(null);
   }
+
 
 }
