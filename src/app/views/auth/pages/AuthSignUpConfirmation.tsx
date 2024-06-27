@@ -9,7 +9,7 @@ import { RoutePaths } from '../../../const/routes.const.ts';
 import { useStore } from '../../../hooks/useStore.hook.ts';
 import { ApiError } from '../../../interfaces/api.interface.ts';
 import { SignUpConfirmationPayload } from '../../../models/auth/auth.interfaces.ts';
-import { InputCode } from '../../shared/InputCode.tsx';
+import { InputCode } from '../../shared/form/InputCode.tsx';
 import { AuthPage } from '../components/AuthPage.tsx';
 
 

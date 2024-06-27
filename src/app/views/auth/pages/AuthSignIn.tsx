@@ -11,7 +11,7 @@ import { Validation } from '../../../const/validation.const.ts';
 import { useStore } from '../../../hooks/useStore.hook.ts';
 import { ApiError } from '../../../interfaces/api.interface.ts';
 import { SignInPayload } from '../../../models/auth/auth.interfaces.ts';
-import { InputError } from '../../shared/InputError.tsx';
+import { InputError } from '../../shared/form/InputError.tsx';
 import { AuthPage } from '../components/AuthPage.tsx';
 
 
