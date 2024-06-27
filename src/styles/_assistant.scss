@@ -2,18 +2,30 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   height: 100%;
 
-  &-result {
+  &-ai {
+    padding: 32px;
   }
 
   &-animation {
+    max-width: 600px;
+    max-height: 600px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   &-user {
+    &-actions {
+      padding: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
   }
 
-  &-actions {
-  }
 }
