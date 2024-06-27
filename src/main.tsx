@@ -1,6 +1,7 @@
 import ReactDOM from 'react-dom/client';
 import { RouterProvider } from 'react-router-dom';
 import './index.scss';
+import './icons/MSIcons/style.scss';
 import { router } from './app/router/Router.tsx';
 
 
