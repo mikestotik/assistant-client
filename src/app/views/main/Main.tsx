@@ -2,7 +2,7 @@ import { observer } from 'mobx-react-lite';
 import { useEffect, useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import { useStore } from '../../hooks/useStore.hook.ts';
-import { Preloader } from '../shared/Preloader.tsx';
+import { Loader } from '../shared/Loader.tsx';
 
 
 export const Main = observer(() => {
@@ -14,13 +14,12 @@ export const Main = observer(() => {
     await accountStore.load();
   };
 
-
   useEffect(() => {
-    loadData().then(() => setLoading(true));
-  }, [ loadData ]);
+    loadData().then(() => setLoading(false));
+  }, []);
 
 
   return (
-    loading ? <Preloader size={ 3 }/> : <Outlet/>
+    loading ? <Loader/> : <Outlet/>
   );
 });
