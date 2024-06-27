@@ -1,4 +1,4 @@
-import { Button, Form, Input } from 'antd';
+import { Button, Form, Input, message } from 'antd';
 import { AxiosError } from 'axios';
 import { Formik, FormikHelpers } from 'formik';
 import { useCallback } from 'react';
@@ -8,6 +8,7 @@ import { Message } from '../../../const/messages.const.ts';
 import { RoutePaths } from '../../../const/routes.const.ts';
 import { Validation } from '../../../const/validation.const.ts';
 import { useStore } from '../../../hooks/useStore.hook.ts';
+import { ApiError } from '../../../interfaces/api.interface.ts';
 import { SignUpPayload } from '../../../models/auth/auth.interfaces.ts';
 import { InputError } from '../../shared/InputError.tsx';
 import { AuthPage } from '../components/AuthPage.tsx';
@@ -44,7 +45,7 @@ export const AuthSignUp = () => {
 
 
   const handleSubmitError = useCallback(async (e: AxiosError) => {
-    console.log(e);
+    message.error((e.response?.data as ApiError).message);
   }, []);
 
 

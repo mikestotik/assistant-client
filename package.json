@@ -12,6 +12,8 @@
     "artifact": "rm -f artifact.zip && cd dist/ && zip -r artifact.zip ./ && mv artifact.zip ../"
   },
   "dependencies": {
+    "@mdi/js": "^7.4.47",
+    "@mdi/react": "^1.6.1",
     "antd": "^5.18.3",
     "axios": "^1.7.2",
     "classnames": "^2.5.1",
