@@ -5,4 +5,5 @@ export namespace CoreApiUri {
   export const AUTH_REFRESH = '/auth/refresh';
 
   export const ACCOUNT = '/account';
+  export const ACCOUNT_ACTIVATE = '/account/activate';
 }

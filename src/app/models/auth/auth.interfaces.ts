@@ -18,5 +18,5 @@ export interface SignUpPayload {
 
 export interface SignUpConfirmationPayload {
   email: string;
-  code: string;
+  code: number | null;
 }

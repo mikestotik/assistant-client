@@ -1,4 +1,4 @@
-import { Button, Form } from 'antd';
+import { Button, Form, message } from 'antd';
 import { AxiosError } from 'axios';
 import { Formik, FormikHelpers } from 'formik';
 import { observer } from 'mobx-react-lite';
@@ -7,6 +7,7 @@ import { Navigate, useNavigate, useSearchParams } from 'react-router-dom';
 import * as Yup from 'yup';
 import { RoutePaths } from '../../../const/routes.const.ts';
 import { useStore } from '../../../hooks/useStore.hook.ts';
+import { ApiError } from '../../../interfaces/api.interface.ts';
 import { SignUpConfirmationPayload } from '../../../models/auth/auth.interfaces.ts';
 import { InputCode } from '../../shared/InputCode.tsx';
 import { AuthPage } from '../components/AuthPage.tsx';
@@ -14,8 +15,9 @@ import { AuthPage } from '../components/AuthPage.tsx';
 
 const formValidationSchema = Yup.object().shape({
   code: Yup.string()
+    .label('Code')
     .matches(/^[0-9]{6}$/, 'Enter a valid code')
-    .required('Code is required')
+    .required()
 });
 
 
@@ -23,7 +25,7 @@ export const AuthSignUpConfirmation = observer(() => {
   const [ searchParams ] = useSearchParams();
   const [ form ] = Form.useForm();
 
-  const { authStore } = useStore();
+  const { accountStore } = useStore();
 
   const navigate = useNavigate();
   const email = searchParams.get('email');
@@ -32,23 +34,26 @@ export const AuthSignUpConfirmation = observer(() => {
     return <Navigate to={ RoutePaths.AUTH_SIGN_IN }/>;
   }
 
-  const formInitialValues: SignUpConfirmationPayload = { email, code: '' };
+  const formInitialValues: SignUpConfirmationPayload = { email, code: null };
 
   const handleSubmitError = useCallback(async (e: AxiosError) => {
-    console.log(e);
+    message.error((e.response?.data as ApiError).message);
   }, []);
 
 
   const onSubmit = useCallback(async (values: SignUpConfirmationPayload, { setSubmitting }: FormikHelpers<SignUpConfirmationPayload>) => {
     try {
-      await authStore.signUpConfirmation(values);
-
+      await accountStore.activate({
+        ...values,
+        code: Number(values.code)
+      });
+      message.success('Account activated successfully!');
       navigate(RoutePaths.MAIN);
     } catch (e) {
       await handleSubmitError(e as AxiosError);
     }
     setSubmitting(false);
-  }, [ authStore, handleSubmitError, navigate ]);
+  }, [ accountStore, handleSubmitError, navigate ]);
 
 
   return (

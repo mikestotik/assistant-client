@@ -1,3 +1,4 @@
+import { SignUpConfirmationPayload } from '../auth/auth.interfaces.ts';
 import { AccountResource } from './account.resource.ts';
 
 
@@ -16,6 +17,10 @@ class AccountService {
     return this.resource.delete();
   }
 
+
+  public async activate(payload: SignUpConfirmationPayload) {
+    return this.resource.activate(payload);
+  }
 }
 
 
