@@ -9,7 +9,6 @@ export const Main = observer(() => {
   const { accountStore } = useStore();
   const [ loading, setLoading ] = useState(true);
 
-
   const loadData = async () => {
     await accountStore.load();
   };
@@ -17,7 +16,6 @@ export const Main = observer(() => {
   useEffect(() => {
     loadData().then(() => setLoading(false));
   }, []);
-
 
   return (
     loading ? <Loader/> : <Outlet/>
