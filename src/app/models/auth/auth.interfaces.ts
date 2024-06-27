@@ -15,3 +15,8 @@ export interface SignUpPayload {
   password: string;
   confirmPassword: string;
 }
+
+export interface SignUpConfirmationPayload {
+  email: string;
+  code: string;
+}

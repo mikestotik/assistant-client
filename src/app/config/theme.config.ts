@@ -12,12 +12,17 @@ export const themeConfig: ThemeConfig = {
       fontSize: 14,
       fontSizeSM: 13,
       fontSizeLG: 14,
-      fontSizeXL: 16
+      fontSizeXL: 16,
+      colorLink: '#3d87ef',
+      colorLinkHover: '#64a1fa',
+      colorLinkActive: '#3d87ef'
     },
     Form: {
       itemMarginBottom: 20,
-      controlItemBgHover: 'transparent',
       verticalLabelPadding: '0 0 6px 4px'
-    }
+    },
+    Input: {
+      colorBgContainer: '#212125'
+    },
   }
 };

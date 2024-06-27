@@ -1,7 +1,7 @@
 import { makeAutoObservable, reaction, runInAction } from 'mobx';
 import { LOCAL_STORAGE_TOKENS } from '../../const/storage.const.ts';
 import { JWTParser } from '../../utils/jwt.utils.ts';
-import { SignInPayload, SignUpPayload } from './auth.interfaces.ts';
+import { SignInPayload, SignUpConfirmationPayload, SignUpPayload } from './auth.interfaces.ts';
 import { authService } from './auth.service.ts';
 
 
@@ -71,4 +71,7 @@ export class AuthStore {
   }
 
 
+  public async signUpConfirmation(values: SignUpConfirmationPayload) {
+    console.log(values);
+  }
 }

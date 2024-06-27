@@ -16,7 +16,7 @@ export const AuthPage = observer(({ children, desc }: AuthPageProps) => {
       <div className="auth-desc">{ desc }</div>
       <div className="auth-content">{ children }</div>
       <div className="auth-footer">
-        <span>By signing up, you acknowledge that you have read and understood, and agree to Plasm AI’s </span>
+        <span>By signing up, you acknowledge that you have read and understood, and agree to Assistants AI </span>
 
         <Button
           type="link"
