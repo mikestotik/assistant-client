@@ -77,6 +77,19 @@ export const AssistantCreate = ({ onClose }: AssistantCreateProps) => {
             <InputError name="title"/>
           </Form.Item>
 
+          <Form.Item label="Logo">
+            <Input
+              size="large"
+              name="logo"
+              status={ errors.logo && touched.logo ? 'error' : '' }
+              placeholder="Logo url"
+              autoComplete="on"
+              onChange={ handleChange }
+              onBlur={ handleBlur }
+              value={ values.logo }
+            />
+          </Form.Item>
+
           <Form.Item label="Description">
             <Input.TextArea
               size="large"

@@ -45,7 +45,13 @@ export const AssistantTeam = observer(() => {
 
       <div className="team-list">
         { assistantStore.assistants.map((item, index) => (
-          <AssistantItem key={ index } title={ item.title } desc={ item.desc } updated={ item.updated }/>
+          <AssistantItem
+            key={ index }
+            title={ item.title }
+            desc={ item.desc }
+            logo={ item.logo }
+            updated={ item.updated }
+          />
         )) }
       </div>
 

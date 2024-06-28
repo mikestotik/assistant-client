@@ -4,15 +4,16 @@ import dayjs from 'dayjs';
 interface AgentItemProps {
   title: string,
   desc?: string
+  logo?: string
   updated?: string | Date
 }
 
 
-export const AssistantItem = ({ title, desc, updated }: AgentItemProps) => {
+export const AssistantItem = ({ title, desc, logo, updated }: AgentItemProps) => {
   return (
     <div className="agent">
       <div className="agent-logo">
-        <i className="icon icon-user"></i>
+        <img src={ logo ?? '/assistant/logo_1.jpg' } alt="logo"/>
       </div>
 
       <div className="agent-info">
