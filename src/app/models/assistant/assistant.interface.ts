@@ -6,7 +6,7 @@ export interface CreateAssistantPayload {
 
 
 export interface Assistant {
-  id: number;
+  id: string;
   created: string | Date;
   updated: string | Date;
   title: string;

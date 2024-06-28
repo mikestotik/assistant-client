@@ -2,6 +2,8 @@ import { Button } from 'antd';
 import useModal from 'antd/lib/modal/useModal';
 import { observer } from 'mobx-react-lite';
 import { useCallback } from 'react';
+import { NavLink } from 'react-router-dom';
+import { RoutePaths } from '../../const/routes.const.ts';
 import { useStore } from '../../hooks/useStore.hook.ts';
 import { AssistantCreate } from './components/AssistantCreate.tsx';
 import { AssistantItem } from './components/AssistantItem.tsx';
@@ -47,13 +49,15 @@ export const AssistantTeam = observer(() => {
 
       <div className="team-list">
         { assistantStore.assistants.map((item, index) => (
-          <AssistantItem
-            key={ index }
-            title={ item.title }
-            desc={ item.desc }
-            logo={ item.logo }
-            updated={ item.updated }
-          />
+          <NavLink to={ RoutePaths.ASSISTANT_CHAT.replace(':id', item.id) }>
+            <AssistantItem
+              key={ index }
+              title={ item.title }
+              desc={ item.desc }
+              logo={ item.logo }
+              updated={ item.updated }
+            />
+          </NavLink>
         )) }
       </div>
 

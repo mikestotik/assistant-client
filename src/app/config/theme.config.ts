@@ -19,10 +19,10 @@ export const themeConfig: ThemeConfig = {
     },
     Form: {
       itemMarginBottom: 20,
-      verticalLabelPadding: '0 0 6px 4px'
+      verticalLabelPadding: '0 0 6px 4px',
     },
     Input: {
-      colorBgContainer: '#212125'
+      colorBgContainer: '#212125',
     },
   }
 };
