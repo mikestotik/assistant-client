@@ -27,7 +27,8 @@ class AssistantService {
 
 
   public async sendMessage(message: ChatUserMessage) {
-
+    return http.post<Assistant>(CoreApiUri.ASSISTANT_MESSAGE, message)
+      .then(res => res?.data);
   }
 }
 

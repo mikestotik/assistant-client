@@ -2,13 +2,18 @@ import { observer } from 'mobx-react-lite';
 import { useEffect, useState } from 'react';
 import { Navigate, Outlet, useMatch } from 'react-router-dom';
 import { RoutePaths } from '../../const/routes.const.ts';
+import { WebSocketEvent } from '../../enums/websocket.enum.ts';
 import { useStore } from '../../hooks/useStore.hook.ts';
+import { useWebSocket } from '../../hooks/useWebSocket.hook.ts';
+import { ChatAssistantMessage } from '../../models/assistant/assistant.interface.ts';
 import { Loader } from '../shared/Loader.tsx';
 
 
 export const Main = observer(() => {
-  const { accountStore, assistantStore } = useStore();
+  const { accountStore, assistantStore, authStore } = useStore();
   const [ loading, setLoading ] = useState(true);
+
+  const { subscribe, unsubscribe } = useWebSocket(authStore.getUserId()!);
 
   useEffect(() => {
     Promise.all([
@@ -16,7 +21,16 @@ export const Main = observer(() => {
       assistantStore.load()
     ])
       .then(() => setLoading(false));
-  }, [ accountStore, assistantStore ]);
+
+    const onAssistantMessage = ({ fromAssistant, message }: ChatAssistantMessage) => {
+      console.log(fromAssistant, message);
+    };
+    subscribe(WebSocketEvent.AssistantMessage, onAssistantMessage);
+
+    return () => {
+      unsubscribe(WebSocketEvent.AssistantMessage, onAssistantMessage);
+    };
+  }, []);
 
 
   if (useMatch(RoutePaths.MAIN)) {

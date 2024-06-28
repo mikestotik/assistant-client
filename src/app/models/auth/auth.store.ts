@@ -35,6 +35,13 @@ export class AuthStore {
   }
 
 
+  public getUserId() {
+    const payload = new JWTParser(this.accessToken!).getPayload();
+    if (!payload) return null;
+    return payload.sub;
+  }
+
+
   public setAccessToken = (accessToken: string | null) => {
     runInAction(() => this.accessToken = accessToken);
   };
@@ -74,4 +81,5 @@ export class AuthStore {
   public async signUpConfirmation(values: SignUpConfirmationPayload) {
     console.log(values);
   }
+
 }

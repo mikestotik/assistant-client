@@ -135,7 +135,7 @@ export const AssistantChat = observer(() => {
       <div className="chat-controls">
         <div className="chat-controls-input">
           <Formik
-            initialValues={ { message: '' } }
+            initialValues={ { message: '', toAssistant: id! } }
             onSubmit={ onSubmit }>
             { ({
                  values,

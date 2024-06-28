@@ -14,6 +14,14 @@ export interface Assistant {
   logo: string;
 }
 
+
+export interface ChatAssistantMessage {
+  message: string;
+  fromAssistant: string;
+}
+
+
 export interface ChatUserMessage {
   message: string;
+  toAssistant: string;
 }
