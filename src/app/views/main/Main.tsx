@@ -7,19 +7,20 @@ import { Loader } from '../shared/Loader.tsx';
 
 
 export const Main = observer(() => {
-  const { accountStore } = useStore();
+  const { accountStore, assistantStore } = useStore();
   const [ loading, setLoading ] = useState(true);
 
   useEffect(() => {
     Promise.all([
-      accountStore.load()
+      accountStore.load(),
+      assistantStore.load()
     ])
       .then(() => setLoading(false));
-  }, [ accountStore ]);
+  }, [ accountStore, assistantStore ]);
 
 
   if (useMatch(RoutePaths.MAIN)) {
-    return <Navigate to={ RoutePaths.ASSISTANT }/>;
+    return <Navigate to={ RoutePaths.ASSISTANT_CHAT }/>;
   }
 
   return (

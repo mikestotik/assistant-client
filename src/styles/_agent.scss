@@ -1,0 +1,44 @@
+.agent {
+  display: flex;
+  padding: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 256ms;
+  margin-bottom: 6px;
+
+  &:hover {
+    background: #ffffff10;
+  }
+
+  &-logo {
+    flex: 0 0 auto;
+    height: 36px;
+    width: 36px;
+    border-radius: 50%;
+    border: 1px solid #ffffff20;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 16px;
+    background: #ffffff20;
+
+    i {
+      opacity: 0.5;
+      font-size: 14px;
+    }
+  }
+
+  &-info {
+    &-title {
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    &-desc {
+      font-size: 14px;
+      opacity: 0.5;
+      line-height: 18px;
+    }
+  }
+}

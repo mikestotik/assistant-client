@@ -32,21 +32,21 @@
 //  }
 //}
 //
-//.ant-modal {
-//  & &-content {
-//    background: #121212;
-//  }
-//
-//  &-confirm &-confirm-title {
-//    color: #ffffff;
-//    font-size: 18px;
-//  }
-//
-//  &-close-x {
-//    color: #ffffff;
-//  }
-//}
-//
+.ant-modal {
+  & &-content {
+    background: #25252c;
+  }
+
+  &-confirm &-confirm-title {
+    color: #ffffff;
+    margin-bottom: 12px;
+  }
+
+  &-close-x {
+    color: #ffffff90;
+  }
+}
+
 //.ant-drawer {
 //  &-content-wrapper {
 //    height: max-content !important;

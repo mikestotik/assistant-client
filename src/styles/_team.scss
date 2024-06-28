@@ -1,0 +1,17 @@
+.team {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 24px 0;
+
+  &-create {
+    flex: 0 0 auto;
+    padding: 0 16px;
+  }
+
+  &-list {
+    flex: 1 1 auto;
+    overflow: auto;
+    padding: 16px;
+  }
+}

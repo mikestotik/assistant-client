@@ -5,4 +5,6 @@ export namespace CoreApiUri {
 
   export const ACCOUNT = '/account';
   export const ACCOUNT_ACTIVATE = '/account/activate';
+
+  export const ASSISTANT = '/assistant';
 }

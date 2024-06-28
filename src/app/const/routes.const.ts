@@ -8,4 +8,5 @@ export namespace RoutePaths {
   export const MAIN = '/main';
 
   export const ASSISTANT = `${ MAIN }/assistant`;
+  export const ASSISTANT_CHAT = `${ MAIN }/assistant/:id`;
 }
