@@ -31,16 +31,18 @@ export const AssistantTeam = observer(() => {
 
   return (
     <div className="team">
-      <div className="team-create">
-        <Button
-          icon={ <i className="icon icon-plus"/> }
-          size="large"
-          type="primary"
-          block
-          onClick={ onCreateAgent }
-        >
-          Add Assistant
-        </Button>
+      <div className="team-logo">
+        <div className="team-logo-image">
+          <img src="/logo.png" alt=""/>
+        </div>
+        <div className="team-logo-info">
+          <div className="team-logo-info-title">
+            Assistant AI
+          </div>
+          <div className="team-logo-info-desc">
+            Version: 1.0 Alfa
+          </div>
+        </div>
       </div>
 
       <div className="team-list">
@@ -53,6 +55,18 @@ export const AssistantTeam = observer(() => {
             updated={ item.updated }
           />
         )) }
+      </div>
+
+      <div className="team-create">
+        <Button
+          icon={ <i className="icon icon-plus"/> }
+          size="large"
+          type="primary"
+          block
+          onClick={ onCreateAgent }
+        >
+          Add Assistant
+        </Button>
       </div>
 
       { contextHolder }
