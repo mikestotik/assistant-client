@@ -1,9 +1,18 @@
-import { Button, Input } from 'antd';
+import { Button, Form, Input, message } from 'antd';
+import { AxiosError } from 'axios';
+import { Formik, FormikHelpers } from 'formik';
 import { observer } from 'mobx-react-lite';
+import { useCallback } from 'react';
 import { Navigate, useParams } from 'react-router-dom';
 import { RoutePaths } from '../../const/routes.const.ts';
 import { useStore } from '../../hooks/useStore.hook.ts';
+import { ApiError } from '../../interfaces/api.interface.ts';
 import { AssistantLogo } from './components/AssistantLogo.tsx';
+
+
+interface ChatUserMessage {
+  message: string;
+}
 
 
 export const AssistantChat = observer(() => {
@@ -12,9 +21,32 @@ export const AssistantChat = observer(() => {
 
   const assistant = assistantStore.selectById(id);
 
+  const [ form ] = Form.useForm();
+
   if (!assistant) {
     return <Navigate to={ RoutePaths.ASSISTANT }/>;
   }
+
+  const handleSubmitError = useCallback(async (e: AxiosError) => {
+    message.error((e.response?.data as ApiError).message);
+  }, []);
+
+  const onSubmit = useCallback(async (values: ChatUserMessage, {
+    setSubmitting,
+    setFieldValue
+  }: FormikHelpers<ChatUserMessage>) => {
+    try {
+      if (values.message.length) {
+        console.log(values);
+        await setFieldValue('message', '');
+      }
+    } catch (e) {
+      await handleSubmitError(e as AxiosError);
+    }
+    setTimeout(() => {
+      setSubmitting(false);
+    }, 2000);
+  }, [ handleSubmitError ]);
 
   return (
     <div className="chat">
@@ -106,9 +138,33 @@ export const AssistantChat = observer(() => {
 
       <div className="chat-controls">
         <div className="chat-controls-input">
-          <Input
-            size="large"
-          />
+          <Formik
+            initialValues={ { message: '' } }
+            onSubmit={ onSubmit }>
+            { ({
+                 values,
+                 errors,
+                 touched,
+                 handleChange,
+                 handleBlur,
+                 handleSubmit,
+                 isSubmitting
+               }) => (
+              <Form form={ form } onFinish={ handleSubmit }>
+                <Input
+                  size="large"
+                  name="message"
+                  status={ errors.message && touched.message ? 'error' : '' }
+                  placeholder="Message"
+                  autoComplete="on"
+                  onChange={ handleChange }
+                  onBlur={ handleBlur }
+                  value={ values.message }
+                  disabled={ isSubmitting }
+                />
+              </Form>
+            ) }
+          </Formik>
         </div>
         <div className="chat-controls-items">
           <div className="chat-controls-items-item">
