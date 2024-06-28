@@ -13,6 +13,11 @@ export class AssistantStore {
   }
 
 
+  public selectById = (id?: string) => {
+    return this.assistants.find(i => i.id === id);
+  };
+
+
   public async load() {
     const list = await assistantService.load();
     return runInAction(() => this.assistants = list);
@@ -23,4 +28,6 @@ export class AssistantStore {
     const item = await assistantService.create(values);
     return runInAction(() => this.assistants = [ ...this.assistants, item ]);
   }
+
+
 }

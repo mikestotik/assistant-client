@@ -1,0 +1,36 @@
+.chat {
+  display: flex;
+  flex-direction: column;
+  flex: 1 0 auto;
+  padding: 16px;
+
+  &-head {
+    display: flex;
+    justify-content: space-between;
+
+    &-assistant {
+    }
+
+    &-tools {
+    }
+  }
+
+  &-body {
+    flex: 1 1 auto;
+  }
+
+  &-controls {
+    margin-top: auto;
+    padding: 8px 0;
+    display: flex;
+
+    &-input {
+      flex: 1 0 auto;
+    }
+
+    &-items {
+      margin-left: 8px;
+      flex: 0 0 auto;
+    }
+  }
+}

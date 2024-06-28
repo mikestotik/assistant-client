@@ -49,10 +49,9 @@ export const AssistantTeam = observer(() => {
 
       <div className="team-list">
         { assistantStore.assistants.map((item, index) => (
-          <NavLink to={ RoutePaths.ASSISTANT_CHAT.replace(':id', item.id) }>
+          <NavLink key={ index } to={ RoutePaths.ASSISTANT_CHAT.replace(':id', item.id) }>
             { ({ isActive }) => (
               <AssistantItem
-                key={ index }
                 title={ item.title }
                 desc={ item.desc }
                 logo={ item.logo }

@@ -15,7 +15,8 @@ export const themeConfig: ThemeConfig = {
       fontSizeXL: 16,
       colorLink: '#3d87ef',
       colorLinkHover: '#64a1fa',
-      colorLinkActive: '#3d87ef'
+      colorLinkActive: '#3d87ef',
+      colorBgContainer: '#212125',
     },
     Form: {
       itemMarginBottom: 20,
