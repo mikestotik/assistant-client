@@ -13,3 +13,7 @@ export interface Assistant {
   desc: string;
   logo: string;
 }
+
+export interface ChatUserMessage {
+  message: string;
+}

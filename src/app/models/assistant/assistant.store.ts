@@ -1,5 +1,5 @@
 import { makeAutoObservable, runInAction } from 'mobx';
-import { Assistant, CreateAssistantPayload } from './assistant.interface.ts';
+import { Assistant, ChatUserMessage, CreateAssistantPayload } from './assistant.interface.ts';
 import { assistantService } from './assistant.service.ts';
 
 
@@ -30,4 +30,7 @@ export class AssistantStore {
   }
 
 
+  public async sendMessage(message: ChatUserMessage) {
+    await assistantService.sendMessage(message);
+  }
 }

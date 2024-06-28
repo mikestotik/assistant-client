@@ -1,6 +1,6 @@
 import http from '../../config/http.config.ts';
 import { CoreApiUri } from '../../const/api.const.ts';
-import { Assistant, CreateAssistantPayload } from './assistant.interface.ts';
+import { Assistant, ChatUserMessage, CreateAssistantPayload } from './assistant.interface.ts';
 import { AssistantResource } from './assistant.resource.ts';
 
 
@@ -23,6 +23,11 @@ class AssistantService {
   public async create(payload: CreateAssistantPayload) {
     return http.post<Assistant>(CoreApiUri.ASSISTANT, payload)
       .then(res => res?.data);
+  }
+
+
+  public async sendMessage(message: ChatUserMessage) {
+
   }
 }
 

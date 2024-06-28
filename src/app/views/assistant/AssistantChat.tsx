@@ -7,12 +7,8 @@ import { Navigate, useParams } from 'react-router-dom';
 import { RoutePaths } from '../../const/routes.const.ts';
 import { useStore } from '../../hooks/useStore.hook.ts';
 import { ApiError } from '../../interfaces/api.interface.ts';
+import { ChatUserMessage } from '../../models/assistant/assistant.interface.ts';
 import { AssistantLogo } from './components/AssistantLogo.tsx';
-
-
-interface ChatUserMessage {
-  message: string;
-}
 
 
 export const AssistantChat = observer(() => {
@@ -37,7 +33,7 @@ export const AssistantChat = observer(() => {
   }: FormikHelpers<ChatUserMessage>) => {
     try {
       if (values.message.length) {
-        console.log(values);
+        await assistantStore.sendMessage(values);
         await setFieldValue('message', '');
       }
     } catch (e) {
@@ -46,7 +42,7 @@ export const AssistantChat = observer(() => {
     setTimeout(() => {
       setSubmitting(false);
     }, 2000);
-  }, [ handleSubmitError ]);
+  }, [ assistantStore, handleSubmitError ]);
 
   return (
     <div className="chat">
