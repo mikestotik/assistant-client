@@ -1,6 +1,8 @@
 .assistant {
   display: flex;
   height: 100%;
+  max-width: 1140px;
+  margin: 0 auto;
 
   &-team {
     flex: 0 0 auto;

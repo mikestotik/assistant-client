@@ -26,7 +26,6 @@ export const AssistantChat = observer(() => {
         <div className="chat-head-tools">
           <Button
             icon={ <i className="icon icon-settings"/> }
-            size="large"
             style={ { fontSize: '20px', opacity: 0.75 } }
           />
         </div>
@@ -43,9 +42,6 @@ export const AssistantChat = observer(() => {
           />
         </div>
         <div className="chat-controls-items">
-          <div className="chat-controls-items-item">
-
-          </div>
           <div className="chat-controls-items-item">
             <Button
               icon={ <i className="icon icon-microphone"/> }
