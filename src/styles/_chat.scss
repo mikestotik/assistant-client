@@ -3,9 +3,13 @@
   flex-direction: column;
   flex: 1 0 auto;
   padding: 16px 24px;
+  height: 100%;
+  max-width: 860px;
+  margin: 0 auto;
 
   &-head {
     display: flex;
+    margin-bottom: 8px;
 
     &-assistant {
       flex: 1;
@@ -22,11 +26,13 @@
 
   &-body {
     flex: 1 1 auto;
+    padding: 20px 0;
+    overflow: hidden;
   }
 
   &-controls {
     margin-top: auto;
-    padding: 10px 0;
+    margin-bottom: 10px;
     display: flex;
 
     &-input {
@@ -37,5 +43,43 @@
       margin-left: 8px;
       flex: 0 0 auto;
     }
+  }
+}
+
+.chat-messages {
+  height: 100%;
+  overflow: auto;
+
+  &-item {
+    margin-bottom: 32px;
+
+    &.user {
+      display: flex;
+      justify-content: flex-end;
+    }
+  }
+}
+
+.chat-message-assistant {
+  background: #1f1f24;
+  padding: 16px 24px;
+  border-radius: 12px;
+  transition: background 256ms;
+
+  &:hover {
+    background: #1f1f2430;
+  }
+}
+
+.chat-message-user {
+  display: inline-flex;
+  text-align: end;
+  padding: 8px 24px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.06);
+  transition: background 256ms;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.1);
   }
 }
