@@ -1,11 +1,11 @@
 .agent {
   display: flex;
   align-items: center;
-  padding: 12px 16px;
+  padding: 8px 16px;
   border-radius: 8px;
   cursor: pointer;
   transition: background 256ms;
-  margin-bottom: 8px;
+  margin-bottom: 12px;
 
   &:hover {
     background: rgba(255, 255, 255, 0.06);
