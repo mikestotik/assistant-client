@@ -1,3 +1,6 @@
+import { StreamEvent } from '@langchain/core/tracers/log_stream';
+
+
 export enum ChatMessageType {
   USER = 'USER',
   ASSISTANT = 'ASSISTANT',
@@ -17,4 +20,10 @@ export interface ChatMessage {
   assistant: string;
   created: string | Date;
   updated: string | Date;
+}
+
+
+export interface ChatAssistantMessage {
+  event: StreamEvent;
+  assistantId: string;
 }
