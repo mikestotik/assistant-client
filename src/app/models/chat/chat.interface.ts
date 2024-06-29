@@ -7,6 +7,12 @@ export enum ChatMessageType {
 }
 
 
+export interface ChatAssistantMessage {
+  event: StreamEvent;
+  assistantId: string;
+}
+
+
 export interface CreateUserMessage {
   text: string;
   assistant: string;
@@ -23,7 +29,4 @@ export interface ChatMessage {
 }
 
 
-export interface ChatAssistantMessage {
-  event: StreamEvent;
-  assistantId: string;
-}
+

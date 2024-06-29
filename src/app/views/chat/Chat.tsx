@@ -6,8 +6,10 @@ import { useCallback, useEffect, useState } from 'react';
 import { useStore } from '../../hooks/useStore.hook.ts';
 import { ApiError } from '../../interfaces/api.interface.ts';
 import { Assistant } from '../../models/assistant/assistant.interface.ts';
-import { CreateUserMessage } from '../../models/chat/chat.interface.ts';
+import { ChatMessageType, CreateUserMessage } from '../../models/chat/chat.interface.ts';
 import { Loader } from '../shared/Loader.tsx';
+import { ChatAssistantMessage } from './components/ChatAssistantMessage.tsx';
+import { ChatUserMessage } from './components/ChatUserMessage.tsx';
 
 
 interface ChatProps {
@@ -53,7 +55,12 @@ export const Chat = observer(({ assistant }: ChatProps) => {
     loading ? <Loader/> : (
       <div className="chat">
         <div className="chat-messages">
-          ...
+          { chatStore.selectChat(assistant.id)?.messages.map(msg => (
+            <div className="chat-messages-item" key={ msg.id }>
+              { msg.type === ChatMessageType.USER && <ChatUserMessage message={ msg }/> }
+              { msg.type === ChatMessageType.USER && <ChatAssistantMessage message={ msg }/> }
+            </div>
+          )) }
         </div>
 
         <div className="chat-controls">
@@ -86,6 +93,7 @@ export const Chat = observer(({ assistant }: ChatProps) => {
               ) }
             </Formik>
           </div>
+
           <div className="chat-controls-items">
             <div className="chat-controls-items-item">
               <Button
