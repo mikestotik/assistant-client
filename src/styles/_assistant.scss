@@ -15,6 +15,25 @@
   }
 }
 
+.assistant-payload {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  &-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+  }
+
+  &-body {
+    flex: 1;
+    overflow: auto;
+  }
+}
+
 .assistant-logo {
   &-title {
     font-size: 16px;
@@ -25,5 +44,11 @@
   &-desc {
     opacity: 0.5;
     font-size: 13px;
+  }
+}
+
+.assistant-tools {
+  button {
+    margin-left: 12px;
   }
 }

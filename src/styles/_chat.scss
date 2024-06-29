@@ -2,37 +2,30 @@
   display: flex;
   flex-direction: column;
   flex: 1 0 auto;
-  padding: 22px 24px 16px;
+  padding: 0 24px;
   height: 100%;
   max-width: 860px;
   margin: 0 auto;
 
-  &-head {
-    display: flex;
-    margin-bottom: 8px;
+  &-messages {
+    flex: 1 1 auto;
+    padding: 20px 0;
+    overflow: auto;
 
-    &-assistant {
-      flex: 1;
-    }
+    &-item {
+      margin-bottom: 32px;
+      font-size: 14px;
 
-    &-tools {
-      margin-left: auto;
-
-      button {
-        margin-left: 8px;
+      &.user {
+        display: flex;
+        justify-content: flex-end;
       }
     }
   }
 
-  &-body {
-    flex: 1 1 auto;
-    padding: 20px 0;
-    overflow: hidden;
-  }
-
   &-controls {
     margin-top: auto;
-    margin-bottom: 10px;
+    padding: 24px 0;
     display: flex;
 
     &-input {
@@ -46,20 +39,6 @@
   }
 }
 
-.chat-messages {
-  height: 100%;
-  overflow: auto;
-
-  &-item {
-    margin-bottom: 32px;
-    font-size: 14px;
-
-    &.user {
-      display: flex;
-      justify-content: flex-end;
-    }
-  }
-}
 
 .chat-message-assistant {
   background: #1f1f24;

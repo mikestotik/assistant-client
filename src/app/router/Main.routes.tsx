@@ -2,7 +2,7 @@ import React from 'react';
 import { RouteObject } from 'react-router';
 import { RoutePaths } from '../const/routes.const.ts';
 import { Assistant } from '../views/assistant/Assistant.tsx';
-import { Chat } from '../views/assistant/Chat.tsx';
+import { AssistantPayload } from '../views/assistant/AssistantPayload.tsx';
 import { Main } from '../views/main/Main.tsx';
 
 
@@ -16,7 +16,7 @@ export const MainRoutes: RouteObject = {
       children: [
         {
           path: RoutePaths.ASSISTANT_CHAT,
-          element: <Chat/>
+          element: <AssistantPayload/>
         }
       ]
     }
