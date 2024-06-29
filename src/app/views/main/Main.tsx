@@ -5,7 +5,7 @@ import { RoutePaths } from '../../const/routes.const.ts';
 import { WebSocketEvent } from '../../enums/ws.enum.ts';
 import { useStore } from '../../hooks/useStore.hook.ts';
 import { useWebSocket } from '../../hooks/useWebSocket.hook.ts';
-import { ChatAssistantMessage } from '../../models/assistant/assistant.interface.ts';
+import { ChatAssistantMessage } from '../../models/chat/chat.interface.ts';
 import { Loader } from '../shared/Loader.tsx';
 
 
