@@ -11,15 +11,12 @@
     flex: 1 1 auto;
     padding: 20px 0;
     overflow: auto;
+    display: flex;
+    flex-direction: column-reverse;
 
     &-item {
       margin-bottom: 32px;
       font-size: 14px;
-
-      &.user {
-        display: flex;
-        justify-content: flex-end;
-      }
     }
   }
 

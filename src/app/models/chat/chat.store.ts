@@ -1,12 +1,11 @@
 import { makeAutoObservable, runInAction } from 'mobx';
-import { Chat } from './chat.impl.ts';
-import { CreateUserMessage } from './chat.interface.ts';
+import { ChatMessage, CreateUserMessage } from './chat.interface.ts';
 import { chatService } from './chat.service.ts';
 
 
 export class ChatStore {
 
-  public chats = new Map<string, Chat>();
+  chats = new Map<string, ChatMessage[]>();
 
 
   constructor() {
@@ -20,14 +19,14 @@ export class ChatStore {
   async load(assistantId: string) {
     if (!this.chats.has(assistantId)) {
       const result = await chatService.load(assistantId);
-      runInAction(() => this.chats.set(assistantId, new Chat(result)));
+      runInAction(() => this.chats.set(assistantId, result.reverse()));
     }
   }
 
 
-  public async create(payload: CreateUserMessage) {
+  async create(payload: CreateUserMessage) {
     const result = await chatService.create(payload);
     const chat = this.selectChat(payload.assistant)!;
-    runInAction(() => chat.addMessage(result));
+    runInAction(() => chat.unshift(result));
   }
 }

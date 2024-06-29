@@ -26,6 +26,7 @@ export const Chat = observer(({ assistant }: ChatProps) => {
     chatStore.load(assistant.id).then(() => setLoading(false));
   }, []);
 
+
   const initialValues: CreateUserMessage = {
     assistant: assistant.id,
     text: ''
@@ -55,10 +56,13 @@ export const Chat = observer(({ assistant }: ChatProps) => {
     loading ? <Loader/> : (
       <div className="chat">
         <div className="chat-messages">
-          { chatStore.selectChat(assistant.id)?.messages.map(msg => (
+          { chatStore.selectChat(assistant.id)?.map(msg => (
             <div className="chat-messages-item" key={ msg.id }>
-              { msg.type === ChatMessageType.USER && <ChatUserMessage message={ msg }/> }
-              { msg.type === ChatMessageType.USER && <ChatAssistantMessage message={ msg }/> }
+              { msg.type === ChatMessageType.USER ? (
+                <ChatUserMessage message={ msg }/>
+              ) : (
+                <ChatAssistantMessage message={ msg }/>
+              ) }
             </div>
           )) }
         </div>
