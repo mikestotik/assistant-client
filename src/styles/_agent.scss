@@ -1,11 +1,11 @@
-.agent {
+.assistant-item {
   display: flex;
   align-items: center;
-  padding: 8px 16px;
+  padding: 10px 16px;
   border-radius: 8px;
   cursor: pointer;
   transition: background 256ms;
-  margin-bottom: 12px;
+  margin-bottom: 4px;
 
   &:hover {
     background: rgba(255, 255, 255, 0.06);

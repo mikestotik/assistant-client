@@ -21,6 +21,7 @@
     "classnames": "^2.5.1",
     "dayjs": "^1.11.11",
     "formik": "^2.4.6",
+    "langchain": "^0.2.8",
     "mobx": "^6.12.4",
     "mobx-react-lite": "^4.0.7",
     "mobx-utils": "^6.0.8",

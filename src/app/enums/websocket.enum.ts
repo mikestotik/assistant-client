@@ -1,3 +1,3 @@
 export enum WebSocketEvent {
-  AssistantMessage = 'AssistantMessage',
+  AssistantChatEvent = 'AssistantChatEvent',
 }

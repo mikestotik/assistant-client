@@ -23,6 +23,11 @@ export const AssistantChat = observer(() => {
     return <Navigate to={ RoutePaths.ASSISTANT }/>;
   }
 
+  const initialValues: ChatUserMessage = {
+    assistantId: id!,
+    message: ''
+  };
+
   const handleSubmitError = useCallback(async (e: AxiosError) => {
     message.error((e.response?.data as ApiError).message);
   }, []);
@@ -135,7 +140,7 @@ export const AssistantChat = observer(() => {
       <div className="chat-controls">
         <div className="chat-controls-input">
           <Formik
-            initialValues={ { message: '', toAssistant: id! } }
+            initialValues={ initialValues }
             onSubmit={ onSubmit }>
             { ({
                  values,

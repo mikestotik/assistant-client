@@ -13,14 +13,14 @@ interface AgentItemProps {
 
 export const AssistantItem = ({ title, desc, logo, updated, active }: AgentItemProps) => {
   return (
-    <div className={ cn('agent', { active }) }>
-      <div className="agent-logo">
+    <div className={ cn('assistant-item', { active }) }>
+      <div className="assistant-item-logo">
         <img src={ logo ?? '/assistant/logo_1.jpg' } alt="logo"/>
       </div>
 
-      <div className="agent-info">
-        <div className="agent-info-title">{ title }</div>
-        <div className="agent-info-desc">{ desc ? desc : 'Updated: ' + dayjs(updated).format('HH:mm') }</div>
+      <div className="assistant-item-info">
+        <div className="assistant-item-info-title">{ title }</div>
+        <div className="assistant-item-info-desc">{ desc ? desc : 'Updated: ' + dayjs(updated).format('HH:mm') }</div>
       </div>
     </div>
   );

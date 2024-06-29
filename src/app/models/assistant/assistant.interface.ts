@@ -1,3 +1,6 @@
+import { StreamEvent } from '@langchain/core/tracers/log_stream';
+
+
 export interface CreateAssistantPayload {
   title: string;
   desc?: string;
@@ -16,12 +19,12 @@ export interface Assistant {
 
 
 export interface ChatAssistantMessage {
-  message: string;
-  fromAssistant: string;
+  event: StreamEvent;
+  assistantId: string;
 }
 
 
 export interface ChatUserMessage {
   message: string;
-  toAssistant: string;
+  assistantId: string;
 }

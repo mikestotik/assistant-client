@@ -22,13 +22,13 @@ export const Main = observer(() => {
     ])
       .then(() => setLoading(false));
 
-    const onAssistantMessage = ({ fromAssistant, message }: ChatAssistantMessage) => {
-      console.log(fromAssistant, message);
+    const onAssistantChatEvent = ({ assistantId, event }: ChatAssistantMessage) => {
+      console.log(assistantId, event);
     };
-    subscribe(WebSocketEvent.AssistantMessage, onAssistantMessage);
+    subscribe(WebSocketEvent.AssistantChatEvent, onAssistantChatEvent);
 
     return () => {
-      unsubscribe(WebSocketEvent.AssistantMessage, onAssistantMessage);
+      unsubscribe(WebSocketEvent.AssistantChatEvent, onAssistantChatEvent);
     };
   }, []);
 
