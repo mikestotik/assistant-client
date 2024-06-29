@@ -2,7 +2,7 @@ import { observer } from 'mobx-react-lite';
 import { useEffect, useState } from 'react';
 import { Navigate, Outlet, useMatch } from 'react-router-dom';
 import { RoutePaths } from '../../const/routes.const.ts';
-import { WebSocketEvent } from '../../enums/websocket.enum.ts';
+import { WebSocketEvent } from '../../enums/ws.enum.ts';
 import { useStore } from '../../hooks/useStore.hook.ts';
 import { useWebSocket } from '../../hooks/useWebSocket.hook.ts';
 import { ChatAssistantMessage } from '../../models/assistant/assistant.interface.ts';
