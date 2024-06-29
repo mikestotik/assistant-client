@@ -8,6 +8,6 @@ interface ChatUserMessageProps {
 
 export const ChatUserMessage = ({ message }: ChatUserMessageProps) => {
   return (
-    <>{ message.text }</>
+    <div className="chat-message-user">{ message.text }</div>
   );
 };

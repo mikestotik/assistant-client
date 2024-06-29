@@ -29,4 +29,22 @@ export class ChatStore {
     const chat = this.selectChat(payload.assistant)!;
     runInAction(() => chat.unshift(result));
   }
+
+
+  public addAssistantMessage(assistantId: string, message: ChatMessage) {
+    const chat = this.selectChat(assistantId)!;
+    runInAction(() => chat.unshift(message));
+  }
+
+
+  public updateAssistantMessage(assistantId: string, runId: string, content: string) {
+    const chat = this.selectChat(assistantId)!;
+    const message = chat.find(i => i.meta?.runId === runId);
+
+    runInAction(() => {
+      if (message) {
+        message.text = message.text + content;
+      }
+    })
+  }
 }

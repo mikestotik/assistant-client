@@ -7,9 +7,21 @@ export enum ChatMessageType {
 }
 
 
-export interface ChatAssistantMessage {
-  event: StreamEvent;
+export interface ChatAssistantMessageChunk {
   assistantId: string;
+  event: StreamEvent;
+}
+
+
+export interface ChatAssistantMessageStart {
+  assistantId: string;
+  message: ChatMessage;
+}
+
+
+export interface ChatAssistantMessageEnd {
+  assistantId: string;
+  message: ChatMessage;
 }
 
 
@@ -19,11 +31,17 @@ export interface CreateUserMessage {
 }
 
 
+interface ChatMessageMeta {
+  runId: string;
+}
+
+
 export interface ChatMessage {
   id: number;
   type: ChatMessageType;
   text: string;
   assistant: string;
+  meta?: ChatMessageMeta;
   created: string | Date;
   updated: string | Date;
 }

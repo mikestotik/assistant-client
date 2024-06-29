@@ -1,3 +1,5 @@
 export enum WebSocketEvent {
-  AssistantChatEvent = 'AssistantChatEvent',
+  AssistantChatMessageStart = 'AssistantChatMessageStart',
+  AssistantChatMessageChunk = 'AssistantChatMessageChunk',
+  AssistantChatMessageEnd = 'AssistantChatMessageEnd',
 }

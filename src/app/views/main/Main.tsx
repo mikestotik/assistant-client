@@ -5,12 +5,19 @@ import { RoutePaths } from '../../const/routes.const.ts';
 import { WebSocketEvent } from '../../enums/ws.enum.ts';
 import { useStore } from '../../hooks/useStore.hook.ts';
 import { useWebSocket } from '../../hooks/useWebSocket.hook.ts';
-import { ChatAssistantMessage } from '../../models/chat/chat.interface.ts';
+import { ChatAssistantMessageChunk, ChatAssistantMessageStart } from '../../models/chat/chat.interface.ts';
 import { Loader } from '../shared/Loader.tsx';
 
 
 export const Main = observer(() => {
-  const { accountStore, assistantStore, authStore } = useStore();
+  const {
+    accountStore,
+    assistantStore,
+    authStore,
+    chatStore
+  }
+    = useStore();
+
   const [ loading, setLoading ] = useState(true);
 
   const { subscribe, unsubscribe } = useWebSocket(authStore.getUserId()!);
@@ -22,13 +29,19 @@ export const Main = observer(() => {
     ])
       .then(() => setLoading(false));
 
-    const onAssistantChatEvent = ({ assistantId, event }: ChatAssistantMessage) => {
-      console.log(assistantId, event);
+    const onAssistantChatMessageStart = ({ assistantId, message }: ChatAssistantMessageStart) => {
+      chatStore.addAssistantMessage(assistantId, message)
     };
-    subscribe(WebSocketEvent.AssistantChatEvent, onAssistantChatEvent);
+    const onAssistantMessageChunk = ({ assistantId, event }: ChatAssistantMessageChunk) => {
+      console.log(assistantId, event);
+      chatStore.updateAssistantMessage(assistantId, event.run_id, event.data.chunk.kwargs.content)
+    };
+    subscribe(WebSocketEvent.AssistantChatMessageStart, onAssistantChatMessageStart);
+    subscribe(WebSocketEvent.AssistantChatMessageChunk, onAssistantMessageChunk);
 
     return () => {
-      unsubscribe(WebSocketEvent.AssistantChatEvent, onAssistantChatEvent);
+      unsubscribe(WebSocketEvent.AssistantChatMessageStart, onAssistantChatMessageStart);
+      unsubscribe(WebSocketEvent.AssistantChatMessageChunk, onAssistantMessageChunk);
     };
   }, []);
 
