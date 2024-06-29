@@ -58,16 +58,28 @@ export class ChatStore {
 
 
   public onAssistantMessageStart = ({ assistantId, message }: ChatAssistantMessageStart) => {
-
+    const chat = this.selectChat(assistantId)!;
+    runInAction(() => chat.unshift(message));
   };
 
 
   public onAssistantMessageStream = ({ assistantId, event }: ChatAssistantMessageChunk) => {
-
+    const chat = this.selectChat(assistantId)!;
+    const newContent = event.data.chunk.kwargs.content;
+    const messages = chat.map(msg => {
+      if (msg.meta?.runId === event.run_id) {
+        return {
+          ...msg,
+          text: msg.text + newContent
+        };
+      }
+      return msg;
+    });
+    this.chats.set(assistantId, messages);
   };
 
 
-  public onAssistantMessageEnd = ({ assistantId, message }: ChatAssistantMessageEnd) => {
-
+  public onAssistantMessageEnd = ({ assistantId, message, event }: ChatAssistantMessageEnd) => {
+    console.log(assistantId, message, event);
   };
 }

@@ -22,6 +22,7 @@ export interface ChatAssistantMessageStart {
 export interface ChatAssistantMessageEnd {
   assistantId: string;
   message: ChatMessage;
+  event?: StreamEvent;
 }
 
 
