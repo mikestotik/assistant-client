@@ -9,7 +9,7 @@ import { AssistantCreate } from './components/AssistantCreate.tsx';
 import { AssistantItem } from './components/AssistantItem.tsx';
 
 
-export const AssistantTeam = observer(() => {
+export const Team = observer(() => {
   const { assistantStore } = useStore();
 
   const [ modal, contextHolder ] = useModal();
@@ -33,20 +33,7 @@ export const AssistantTeam = observer(() => {
 
   return (
     <div className="team">
-      <div className="team-logo">
-        <div className="team-logo-image">
-          <img src="/logo.png" alt=""/>
-        </div>
-        <div className="team-logo-info">
-          <div className="team-logo-info-title">
-            Assistant AI
-          </div>
-          <div className="team-logo-info-desc">
-            Version: 1.0 Alfa
-          </div>
-        </div>
-      </div>
-
+      <div className="team-title">My Team</div>
       <div className="team-list">
         { assistantStore.assistants.map((item, index) => (
           <NavLink key={ index } to={ RoutePaths.ASSISTANT_CHAT.replace(':id', item.id) }>

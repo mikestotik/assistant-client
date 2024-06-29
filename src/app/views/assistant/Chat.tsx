@@ -11,7 +11,7 @@ import { ChatUserMessage } from '../../models/assistant/assistant.interface.ts';
 import { AssistantLogo } from './components/AssistantLogo.tsx';
 
 
-export const AssistantChat = observer(() => {
+export const Chat = observer(() => {
   const { id } = useParams<{ id: string }>();
   const { assistantStore } = useStore();
 

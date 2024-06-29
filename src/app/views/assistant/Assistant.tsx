@@ -1,19 +1,13 @@
 import { observer } from 'mobx-react-lite';
 import { Outlet } from 'react-router-dom';
-import { AssistantTeam } from './AssistantTeam.tsx';
+import { AppPage } from '../shared/AppPage.tsx';
+import { Team } from './Team.tsx';
 
 
 export const Assistant = observer(() => {
-
   return (
-    <div className="assistant">
-      <div className="assistant-team">
-        <AssistantTeam/>
-      </div>
-
-      <div className="assistant-chat">
-        <Outlet/>
-      </div>
-    </div>
+    <AppPage sidebar={ <Team/> }>
+      <Outlet/>
+    </AppPage>
   );
 });
