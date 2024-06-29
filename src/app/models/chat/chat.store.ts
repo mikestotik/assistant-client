@@ -18,9 +18,8 @@ export class ChatStore {
 
 
   async load(assistantId: string) {
-    const result = await chatService.load(assistantId);
-
     if (!this.chats.has(assistantId)) {
+      const result = await chatService.load(assistantId);
       runInAction(() => this.chats.set(assistantId, new Chat(result)));
     }
   }
