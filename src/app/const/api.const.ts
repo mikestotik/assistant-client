@@ -8,4 +8,6 @@ export namespace CoreApiUri {
 
   export const ASSISTANT = '/assistant';
   export const ASSISTANT_MESSAGE = '/assistant/message';
+
+  export const MESSAGE = '/message';
 }
