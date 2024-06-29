@@ -42,7 +42,7 @@ export const Chat = observer(({ assistant }: ChatProps) => {
   }: FormikHelpers<CreateUserMessage>) => {
     try {
       if (values.text.length) {
-        await chatStore.create(values);
+        await chatStore.createUserMessage(values);
         await setFieldValue('text', '');
       }
     } catch (e) {

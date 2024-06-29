@@ -5,7 +5,6 @@ import { RoutePaths } from '../../const/routes.const.ts';
 import { WebSocketEvent } from '../../enums/ws.enum.ts';
 import { useStore } from '../../hooks/useStore.hook.ts';
 import { useWebSocket } from '../../hooks/useWebSocket.hook.ts';
-import { ChatAssistantMessageChunk, ChatAssistantMessageStart } from '../../models/chat/chat.interface.ts';
 import { Loader } from '../shared/Loader.tsx';
 
 
@@ -29,19 +28,14 @@ export const Main = observer(() => {
     ])
       .then(() => setLoading(false));
 
-    const onAssistantChatMessageStart = ({ assistantId, message }: ChatAssistantMessageStart) => {
-      chatStore.addAssistantMessage(assistantId, message)
-    };
-    const onAssistantMessageChunk = ({ assistantId, event }: ChatAssistantMessageChunk) => {
-      console.log(assistantId, event);
-      chatStore.updateAssistantMessage(assistantId, event.run_id, event.data.chunk.kwargs.content)
-    };
-    subscribe(WebSocketEvent.AssistantChatMessageStart, onAssistantChatMessageStart);
-    subscribe(WebSocketEvent.AssistantChatMessageChunk, onAssistantMessageChunk);
+    subscribe(WebSocketEvent.AssistantChatMessageStart, chatStore.onAssistantMessageStart);
+    subscribe(WebSocketEvent.AssistantChatMessageChunk, chatStore.onAssistantMessageStream);
+    subscribe(WebSocketEvent.AssistantChatMessageEnd, chatStore.onAssistantMessageEnd);
 
     return () => {
-      unsubscribe(WebSocketEvent.AssistantChatMessageStart, onAssistantChatMessageStart);
-      unsubscribe(WebSocketEvent.AssistantChatMessageChunk, onAssistantMessageChunk);
+      unsubscribe(WebSocketEvent.AssistantChatMessageStart, chatStore.onAssistantMessageStart);
+      unsubscribe(WebSocketEvent.AssistantChatMessageChunk, chatStore.onAssistantMessageStream);
+      unsubscribe(WebSocketEvent.AssistantChatMessageEnd, chatStore.onAssistantMessageEnd);
     };
   }, []);
 
