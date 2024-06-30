@@ -24,7 +24,7 @@ export const AssistantPayload = observer(() => {
           title={ assistant.title }
           updated={ assistant.updated }
         />
-        <AssistantTools/>
+        <AssistantTools assistant={assistant}/>
       </div>
 
       <div className="assistant-payload-body">
