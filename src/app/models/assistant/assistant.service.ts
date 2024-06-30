@@ -1,22 +1,19 @@
 import http from '../../config/http.config.ts';
 import { CoreApiUri } from '../../const/api.const.ts';
 import { Assistant, CreateAssistantPayload, UpdateAssistantPayload } from './assistant.interface.ts';
-import { AssistantResource } from './assistant.resource.ts';
 
 
 class AssistantService {
 
-  private readonly resource = new AssistantResource();
-
 
   public async load() {
-    return this.resource.load()
+    return http.get<Assistant[]>(CoreApiUri.ASSISTANT)
       .then(res => res?.data);
   }
 
 
-  public async delete() {
-    return this.resource.delete();
+  public async delete(id: string) {
+    return http.delete(`${ CoreApiUri.ASSISTANT }/${ id }`);
   }
 
 

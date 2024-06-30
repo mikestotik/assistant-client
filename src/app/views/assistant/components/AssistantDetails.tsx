@@ -44,6 +44,16 @@ export const AssistantDetails = ({ assistant }: AssistantCreateProps) => {
     setSubmitting(false);
   }, [ assistant.id, assistantStore, handleSubmitError ]);
 
+
+  const onDelete = useCallback(async () => {
+    try {
+      await assistantStore.delete(assistant.id);
+    } catch (e) {
+      await handleSubmitError(e as AxiosError);
+    }
+  }, []);
+
+
   return (
     <Formik
       initialValues={ formInitialValues }
@@ -59,59 +69,77 @@ export const AssistantDetails = ({ assistant }: AssistantCreateProps) => {
            isSubmitting,
            isValid
          }) => (
-        <Form form={ form } layout="vertical" onFinish={ handleSubmit }>
-          <Form.Item label="Title">
-            <Input
-              size="large"
-              name="title"
-              status={ errors.title && touched.title ? 'error' : '' }
-              placeholder="Type title"
-              autoComplete="on"
-              onChange={ handleChange }
-              onBlur={ handleBlur }
-              value={ values.title }
-            />
-            <InputError name="title"/>
-          </Form.Item>
+        <Form className="assistant-details" form={ form } layout="vertical" onFinish={ handleSubmit }>
+          <div className="assistant-details-controls">
+            <Form.Item label="Title">
+              <Input
+                size="large"
+                name="title"
+                status={ errors.title && touched.title ? 'error' : '' }
+                placeholder="Type title"
+                autoComplete="on"
+                onChange={ handleChange }
+                onBlur={ handleBlur }
+                value={ values.title }
+              />
+              <InputError name="title"/>
+            </Form.Item>
 
-          <Form.Item label="Logo">
-            <Input
-              size="large"
-              name="logo"
-              status={ errors.logo && touched.logo ? 'error' : '' }
-              placeholder="Logo url"
-              autoComplete="on"
-              onChange={ handleChange }
-              onBlur={ handleBlur }
-              value={ values.logo }
-            />
-          </Form.Item>
+            <Form.Item label="Logo">
+              <Input
+                size="large"
+                name="logo"
+                status={ errors.logo && touched.logo ? 'error' : '' }
+                placeholder="Logo url"
+                autoComplete="on"
+                onChange={ handleChange }
+                onBlur={ handleBlur }
+                value={ values.logo }
+              />
+            </Form.Item>
 
-          <Form.Item label="Description">
-            <Input.TextArea
-              size="large"
-              name="desc"
-              status={ errors.desc && touched.desc ? 'error' : '' }
-              placeholder="Type description"
-              autoComplete="on"
-              onChange={ handleChange }
-              onBlur={ handleBlur }
-              value={ values.desc }
-            />
-          </Form.Item>
+            <Form.Item label="Description">
+              <Input.TextArea
+                size="large"
+                name="desc"
+                status={ errors.desc && touched.desc ? 'error' : '' }
+                placeholder="Type description"
+                autoComplete="on"
+                onChange={ handleChange }
+                onBlur={ handleBlur }
+                value={ values.desc }
+              />
+            </Form.Item>
+          </div>
 
-          <Form.Item style={ { marginTop: 24 } }>
-            <Button
-              size="large"
-              htmlType="submit"
-              type={ isSubmitting ? 'default' : 'primary' }
-              disabled={ !isValid || isSubmitting }
-              loading={ isSubmitting }
-              block
-            >
-              Save
-            </Button>
-          </Form.Item>
+          <div className="assistant-details-actions">
+            <Form.Item style={ { marginTop: 24 } }>
+              <Button
+                size="large"
+                htmlType="submit"
+                type={ isSubmitting ? 'default' : 'primary' }
+                disabled={ !isValid || isSubmitting }
+                loading={ isSubmitting }
+                block
+                style={ { marginBottom: 6 } }
+              >
+                Save
+              </Button>
+
+              <Button
+                size="large"
+                htmlType="button"
+                type="primary"
+                disabled={ !isValid || isSubmitting }
+                loading={ isSubmitting }
+                block
+                danger
+                onClick={ onDelete }
+              >
+                Delete
+              </Button>
+            </Form.Item>
+          </div>
         </Form>
       ) }
     </Formik>

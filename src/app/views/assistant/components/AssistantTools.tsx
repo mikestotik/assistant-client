@@ -16,10 +16,11 @@ export const AssistantTools = ({ assistant }: AssistantToolsProps) => {
     <div className="assistant-tools">
       <Button
         icon={ <i className="icon icon-list"/> }
-        style={ { fontSize: '22px', opacity: 0.75 } }
+        style={ { fontSize: '22px', opacity: 0.75, display: 'none' } }
         size="large"
         type="text"
       />
+
       <Button
         icon={ <i className="icon icon-settings"/> }
         style={ { fontSize: '22px', opacity: 0.75 } }

@@ -37,4 +37,10 @@ export class AssistantStore {
       return i;
     }));
   }
+
+
+  public async delete(id: string) {
+    await assistantService.delete(id);
+    return runInAction(() => this.assistants = this.assistants.filter(i => i.id !== id));
+  }
 }
